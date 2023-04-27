@@ -49,6 +49,9 @@ std::ostream& operator<<(std::ostream& o, const glm::vec2& v) {
 }
 
 std::ostream& operator<<(std::ostream& o, const glm::quat& v) {
-  o << glm::to_string(v);
+  char line[1024];
+  snprintf(line, sizeof(line),
+      "%10f, %10f, %10f, %10f", v[0], v[1], v[2], v[3]);
+  o << line;
   return o;
 }

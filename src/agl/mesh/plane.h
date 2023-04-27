@@ -18,7 +18,7 @@ class Plane : public TriangleMesh {
  protected:
   void init() override;
 
- protected:
+ private:
   float _xsize;
   float _zsize;
   int _xdivs;

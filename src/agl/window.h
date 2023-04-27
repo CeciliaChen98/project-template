@@ -237,28 +237,6 @@ class Window {
   void setWindowSize(int w, int h);
 
   /**
-   * @brief Initialize the projection and camera to fit the given dimensions
-   * and center using an orthographic projection
-   * @param center The center of the scene
-   * @param dim The dimension of the scene
-   *
-   * @see ortho(float, float, float, float, float, float)
-   * @see lookAt(const glm::vec3, const glm::vec3&, const glm::vec3&)
-   */
-  void setupOrthoScene(const glm::vec3& center, const glm::vec3& dim);
-
-  /**
-   * @brief Initialize the projection and camera to fit the given dimensions
-   * and center using a perspective projection
-   * @param center The center of the scene
-   * @param dim The dimension of the scene
-   *
-   * @see perspective(float, float, float, float)
-   * @see lookAt(const glm::vec3, const glm::vec3&, const glm::vec3&)
-   */
-  void setupPerspectiveScene(const glm::vec3& center, const glm::vec3& dim);
-
-  /**
    * @copydoc Renderer::lookAt(
    *     const glm::vec3&, const glm::vec&, const glm::vec3&)
    *
@@ -287,9 +265,6 @@ class Window {
    */
   void ortho(float minx, float maxx,
       float miny, float maxy, float minz, float maxz);
-
-  ///@}
-
 
  private:
   void init();

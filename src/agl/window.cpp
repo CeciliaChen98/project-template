@@ -45,54 +45,6 @@ void Window::noLoop() {
   glfwSetWindowShouldClose(_window, GL_TRUE);
 }
 
-void Window::setupOrthoScene(const vec3& center, const vec3& dim) {
-  vec3 minCorner = center - 0.5f * dim;
-  vec3 maxCorner = center + 0.5f * dim;
-  ortho(minCorner.x, maxCorner.x,
-        minCorner.y, maxCorner.y,
-        minCorner.z, maxCorner.z);
-
-  vec3 offset(0, 0.25f * dim.y, 0.25f * dim.z);
-  lookAt(center - offset, center);
-}
-
-void Window::setupPerspectiveScene(const vec3& center, const vec3& dim) {
-  float w = dim[0];
-  float h = dim[1];
-  float d = dim[2];
-  float vfov = glm::radians(60.0);
-  float angle = 0.5f * vfov;
-  float aspect = ((float)_windowWidth) / _windowHeight;
-  float dist;
-  vec3 up, eye, look;
-
-  if (d > h) {
-    up = vec3(0, 0.0, 1.0);
-    if (w > d) {
-      dist = w*0.5 / tan(angle);
-    } else {
-      dist = d*aspect*0.5 / tan(angle);
-    }
-    eye = 0.5f * vec3(-dist, dist, h);
-    eye = eye + center;
-    look = center;
-
-  } else {
-    up = vec3(0, 1.0, 0.0);
-    if (w > h) {
-      dist = w*0.5 / tan(angle);
-    } else {
-      dist = h*aspect*0.5 / tan(angle);
-    }
-    eye = 0.5f * vec3(-dist, h, dist);
-    eye = center + eye;
-    look = center;
-  }
-  float far = std::max(std::max(w, h), d) * 2;
-  perspective(vfov, aspect, far * 0.01f, far);
-  lookAt(eye, look, up);
-}
-
 void Window::ortho(float minx, float maxx,
     float miny, float maxy, float minz, float maxz) {
   renderer.ortho(minx, maxx, miny, maxy, minz, maxz);
@@ -263,6 +215,7 @@ void Window::onMouseButton(int button, int action, int mods) {
   double xpos, ypos;
   glfwGetCursorPos(_window, &xpos, &ypos);
 
+  // ASN TODO: Save/pass modifiers so users can get it
   if (action == GLFW_PRESS) {
     _lastx = xpos;
     _lasty = ypos;

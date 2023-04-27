@@ -88,8 +88,8 @@ set(SHADERS
     shaders/unlit.fs
     )
 
-add_executable(demo src/demo.cpp ${SOURCES} ${SHADERS})
-target_link_libraries(demo ${CORE})
+add_executable(elf src/elf.cpp ${SOURCES} ${SHADERS})
+target_link_libraries(elf ${CORE})
 
 if (WIN32)
   source_group("shaders" FILES ${SHADERS})

@@ -18,11 +18,6 @@ struct ShaderFileExtension {
   GLSLShader::Type type;
 };
 
-struct ShaderTypeName {
-  GLSLShader::Type type;
-  const char* name;
-};
-
 struct ShaderFileExtension extensions[] = {
   {".vs",  GLSLShader::VERTEX},
   {".vert", GLSLShader::VERTEX},
@@ -36,18 +31,6 @@ struct ShaderFileExtension extensions[] = {
   {".cs",  GLSLShader::COMPUTE}
 #endif
 };
-
-const char* TypeName(GLSLShader::Type type) {
-  if (type == GLSLShader::VERTEX) return "Vertex";
-  else if (type == GLSLShader::GEOMETRY) return "Geometry";
-  else if (type == GLSLShader::TESS_CONTROL) return "Tess_control";
-  else if (type == GLSLShader::TESS_EVALUATION) return "Tess_evaluation";
-  else if (type == GLSLShader::FRAGMENT) return "Fragment";
-#ifndef __APPLE__
-  else if (type == GLSLShader::COMPUTE) return "Compute";
-#endif
-  return "Unknown";
-}
 }  // namespace GLSLShaderInfo
 
 Shader::Shader() : handle(0), linked(false) {}
@@ -108,9 +91,8 @@ string Shader::getExtension(const std::string& nameStr) {
 }
 
 void Shader::compileShader(const std::string& fileName, GLSLShader::Type type) {
-  string typeString = GLSLShaderInfo::TypeName(type);
   if (!fileExists(fileName)) {
-    string message = typeString + " shader: " + fileName + " not found.";
+    string message = string("Shader: ") + fileName + " not found.";
     throw GLSLProgramException(message);
   }
 
@@ -167,7 +149,7 @@ void Shader::compileSource(const string &source, GLSLShader::Type type) {
       delete[] c_log;
     }
     string msg;
-    msg = string(GLSLShaderInfo::TypeName(type)) + " shader compilation failed.\n";
+    msg = "Shader compilation failed.\n";
     msg += logString;
     throw GLSLProgramException(msg);
 
@@ -202,9 +184,7 @@ void Shader::link() {
       delete[] c_log;
     }
 
-    string message;
-    message = "Program link failed:\n" + logString;
-    throw GLSLProgramException(message);
+    throw GLSLProgramException(string("Program link failed:\n") + logString);
   } else {
     findUniformLocations();
     linked = true;
