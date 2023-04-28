@@ -2,12 +2,9 @@
 
 It's a 2D game that combines the endless runner game and shooter game together
 
+![avatar](/elf.GIF)
 
- <video src="https://github.com/CeciliaChen98/project-template/blob/d2440c897d0dc7e9436023729076e1f89ba15a57/elf.mov" controls="controls" muted="muted" class="d-block rounded-bottom-2 width-fit" style="max-height:640px;">
-
-</video>
-
-
+Full video can be found in this repository
 ## How to build
 
 *Windows*
