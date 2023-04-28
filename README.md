@@ -2,7 +2,7 @@
 
 It's a 2D game that combines the endless runner game and shooter game together
 
-![avatar](/elf.GIF)
+![avatar](elf.GIF)
 
 Full video can be found in this repository
 ## How to build
