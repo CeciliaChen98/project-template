@@ -3,6 +3,11 @@
 It's a 2D game that combines the endless runner game and shooter game together
 
 
+ <video src="https://github.com/CeciliaChen98/project-template/blob/d2440c897d0dc7e9436023729076e1f89ba15a57/elf.mov" controls="controls" muted="muted" class="d-block rounded-bottom-2 width-fit" style="max-height:640px;">
+
+</video>
+
+
 ## How to build
 
 *Windows*
@@ -41,10 +46,41 @@ project-template/build $ ../bin/demo
 ```
 
 
-## Demo of basic features
-
-TODO: Document the main demos your viewer 
-
 ## Unique features 
 
-TODO: Show the unique features you made
+Main Character:
+
+![avatar](/arts/Character.GIF)
+```
+Weapon: bow and arrow
+The elf can shoot dark arrows and light arrows to kill bats and gain points
+Using the mouse to control the direction of shooting the arrow
+However, there are no more than 10 arrows at the same time
+```
+Enermy 1:
+Eyeballs
+![avatar](/arts/eye.GIF)
+```
+Eyeballs walk straightly and cannot be hurt by the arrow
+```
+Enermy 2:
+Bats
+![avatar](/arts/bat.GIF)
+```
+Bats fly toward the elf and can be hurt be the dark arrow.
+When bats are killed, they have chances to drop hearts, which can recover elf's HP 
+or increase the score when the HP is full(3)
+```
+Control:
+```
+Mouse click: shooting arrows
+left-click: shoot dark arrows which can hurt enemies
+right-click: shoot light arrows which can pick up items
+
+Keyboard: avoid colliding with eyeballs
+A: move left
+D: move right
+```
+
+Infinite Map:
+![avatar](/textures/map.png)
