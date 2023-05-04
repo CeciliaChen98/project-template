@@ -1,10 +1,12 @@
 # Little Elf in the Woods
 
 It's a 2D game that combines the endless runner game and shooter game together
+![Watch the video](https://img.youtube.com/vi/AR0ULgA15fc/0.jpg)](https://youtu.be/AR0ULgA15fc)
 
-![avatar](elf.GIF)
 
-Full video can be found in this repository
+
+
+Full video can also be found in this repository
 ## How to build
 
 *Windows*
